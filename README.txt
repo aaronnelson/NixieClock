@@ -1,0 +1,1 @@
+This is a Readme Placeholder for my clock project.  I will add more later
