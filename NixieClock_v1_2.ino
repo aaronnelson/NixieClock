@@ -123,12 +123,12 @@ unsigned long getNTPTime()  {
 }
 
 String convertString(int digits)  {
-  String outString = "";
+  String outString = "";                          // zero out string
   if(digits < 10){
-    outString = String("0" + digits);
+    outString = String("0" + digits);             // padding for single digits
   } else {
     outString = String(digits);
   }
-  return outString;
+  return outString;                              // return as string for array
 }
   
