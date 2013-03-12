@@ -1,5 +1,6 @@
-/* Nixie Clock v1
-  Custom Code and borrowed code from examples
+/* Nixie Clock v1.3
+  Some custom code.  Borrows heavily from examples UDPNTPClient
+  and the Nixie examples as well as code from the Time Library examples.
 */
 #include <SPI.h>         
 #include <Ethernet.h>
@@ -67,6 +68,8 @@ void loop()  {
   
   if(now() != currentTime)  {
     currentTime = now();
+    /* Serial lines are for debugging.  Most will be deleted in final version
+    of code. */
     Serial.print("Offset: ");
     Serial.println(timeZoneOffset);
     Serial.print("Hour: ");
@@ -75,7 +78,8 @@ void loop()  {
     Serial.println(minute(currentTime));
     Serial.print("Seconds: ");
     Serial.println(second(currentTime));
-    // Serial.println(currentTime);
+    Serial.print("Current Secs: ");
+    Serial.println(currentTime);
     timeString = String(convertString(hour(currentTime)) + convertString(minute(currentTime)) + convertString(second(currentTime)));
     Serial.println("Time String: ");
     Serial.println(timeString);
@@ -83,7 +87,6 @@ void loop()  {
     Serial.print("num :");
     Serial.println(num);
     nixie.writeNumZero(num, numDigits);
-    //nixie.writeArray(timeArr, numDigits);
   }
   
 }
